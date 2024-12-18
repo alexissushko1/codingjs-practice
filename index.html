@@ -1,13 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Coding Challenges</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        font-size: 16px;
+        color: #555;
+      }
+
+      pre {
+        background-color: #282c34;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 16px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <h1>Coding Challenge</h1>
+
+    <!-- Problem Description will be displayed here -->
+    <div id="problem-description"></div>
+
+    <!-- Problem Solution will be displayed here -->
+    <div id="problem-solution"></div>
+
+    <!-- Buttons to load different problems -->
+    <button onclick="loadProblem('problem1')">Problem 1: Sum of Array</button>
+    <button onclick="loadProblem('problem2')">Problem 2: monkeyTrouble</button>
+    <button onclick="loadProblem('problem3')">
+      Problem 3: Factorial of a Number
+    </button>
+
+    <!-- Load the script at the end of the body to ensure DOM is ready -->
+    <script>
+      // Make loadProblem function globally accessible
+      window.loadProblem = async function (problem) {
+        // Clean up any previous problem content
+        document.getElementById("problem-description").innerHTML = "";
+        document.getElementById("problem-solution").innerHTML = "";
+
+        try {
+          // Dynamically import the corresponding problem file
+          const module = await import(`/src/problems/${problem}.js`);
+
+          // Use the module to populate the content
+          document.getElementById("problem-description").innerHTML =
+            module.problemDescription;
+          document.getElementById("problem-solution").innerHTML =
+            module.problemSolution;
+        } catch (error) {
+          console.error("Error loading the problem:", error);
+        }
+      };
+    </script>
   </body>
 </html>
