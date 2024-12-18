@@ -1,4 +1,4 @@
-// src/problems/problem2.js
+// src/problems/problem3.js
 // Warmup-1  sumDouble problem
 
 // Problem Description
