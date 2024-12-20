@@ -1,10 +1,10 @@
 // src/problems/problem11.js
-// Warmup-1  frontBack problem
+// Warmup-1  front3 problem
 
 // Problem Description
 export const problemDescription = `
-<h2>Problem: frontBack</h2>
-<p>Given a string, return a new string where the first and last chars have been exchanged.</p>
+<h2>Problem: front3</h2>
+<p>Given a string, we'll say that the front is the first 3 chars of the string. If the string length is less than 3, the front is whatever is there. Return a new string which is 3 copies of the front.</p>
 <p>Example:</p>
 <pre>
 frontBack('code') → eodc
